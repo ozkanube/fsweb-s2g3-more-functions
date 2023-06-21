@@ -16,9 +16,15 @@
   örnek output: ""
 */
 
-function dosyaAdiniBul(/* kodlar buraya */) {
-  // kodlar buraya
+function dosyaAdiniBul(yol) {
+  if (yol == "") {
+    return "";
+  }
+
+  let str1 = yol.split("/");
+  return str1[str1.length - 1];
 }
+console.log(dosyaAdiniBul("C:/Users/johnsmith/Music/Beethoven_5.mp3"));
 
 /*
   GÖREV 2
@@ -38,8 +44,15 @@ function dosyaAdiniBul(/* kodlar buraya */) {
   örnek output: 104
 */
 
-function ortalamaBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamaBul(sayilar) {
+  if (sayilar.length == 0) {
+    return null;
+  }
+  let toplam = sayilar.reduce((toplam, item) => {
+    return toplam + item;
+  }, 0);
+
+  return toplam / sayilar.length;
 }
 
 /*
@@ -62,8 +75,24 @@ function ortalamaBul(/* kodlar buraya */) {
   örnek output: [109, 216, 288, 143, 185, 194]
 */
 
-function ortalamadanBuyukleriBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamadanBuyukleriBul(sayilar, ortalamaBul) {
+  let ortalama = ortalamaBul(sayilar);
+  /*let result = [];
+
+  sayilar.forEach(sayi => {
+    if (sayi >= ortalama) {
+      result.push(sayi);
+    }
+  });*/
+
+  let result = sayilar.reduce((acc, sayi) => {
+    if (sayi >= ortalama) {
+      acc.push(sayi);
+    }
+    return acc;
+  }, []);
+
+  return result;
 }
 
 /* !!!! Burdan aşağısını değiştirmeyin !!!! */
